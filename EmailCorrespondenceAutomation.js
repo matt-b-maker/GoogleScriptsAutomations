@@ -1,10 +1,12 @@
 const acroColumn = 1;
 const idColumn = 3;
 const worksheetColumn = 4;
+const billLabel = "AdminYP/op:Gmail/bill";
+
 
 function myFunction() {
   let start = new Date();
-  let labelObject = GmailApp.getUserLabelByName("AdminYP/op:Gmail/bill");
+  let labelObject = GmailApp.getUserLabelByName(billLabel);
   let threads = labelObject.getThreads();
 
   class email {
@@ -81,7 +83,7 @@ function myFunction() {
         Logger.log(currentThread);
         var currentEmailLabels = currentThread.getLabels();
         currentEmailLabels.forEach((label) => {
-          if (label.getName() === "Test"){
+          if (label.getName() === billLabel){
             currentThread.removeLabel(label);
           }
         });
